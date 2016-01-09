@@ -3,7 +3,7 @@ A set of functions for using HTTP methods in RESTful services.
 
 ## Version 1.0 (Current version)
 - Methods for HTTP verbs (GEt, POST, PUT, DELETE)
-- Method for execution any HTTP operation
+- Method to execute any HTTP operation
 
 ## Usage
 Download both the .h and .m files and add them to your project.
