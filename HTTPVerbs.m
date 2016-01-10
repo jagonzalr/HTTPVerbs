@@ -28,7 +28,19 @@
 
 @interface HTTPVerbs ()
 
-+ (void)FetchOperation:(NSMutableURLRequest *)urlRequest
+/*
+ 
+ Name: fetchOperation:Success:Failure
+ Description: Calls the request previosuly made in the other methods.
+ Arguments:
+    - url request
+ Returns: an asynchronous response.
+    - success (result, error, response, statusCode)
+    - error (result, error, response, statusCode)
+ 
+ */
+
++ (void)fetchOperation:(NSMutableURLRequest *)urlRequest
                Success:(void(^)(NSData *result,
                                 NSError *error,
                                 NSURLResponse *response,
@@ -42,7 +54,7 @@
 
 @implementation HTTPVerbs
 
-+ (void)GetOperation:(NSURL *)url
++ (void)getOperation:(NSURL *)url
              Success:(void(^)(NSData *result,
                               NSError *error,
                               NSURLResponse *response,
@@ -61,7 +73,7 @@
       forHTTPHeaderField:@"Content-Type"];
     
     // Fetch the request
-    [HTTPVerbs FetchOperation:urlRequest
+    [HTTPVerbs fetchOperation:urlRequest
                  Success:^(NSData *result,
                            NSError *error,
                            NSURLResponse *response,
@@ -78,7 +90,7 @@
      }];
 }
 
-+ (void)PostOperation:(NSURL *)url
++ (void)postOperation:(NSURL *)url
                  Data:(NSDictionary *)data
               Success:(void(^)(NSData *result,
                                NSError *error,
@@ -110,7 +122,7 @@
     [urlRequest setHTTPBody:postData];
     
     // Call the request
-    [self FetchOperation:urlRequest
+    [self fetchOperation:urlRequest
                  Success:^(NSData *result,
                            NSError *error,
                            NSURLResponse *response,
@@ -127,7 +139,7 @@
      }];
 }
 
-+ (void)PutOperation:(NSURL *)url
++ (void)putOperation:(NSURL *)url
                 Data:(NSDictionary *)data
              Success:(void(^)(NSData *result,
                               NSError *error,
@@ -159,7 +171,7 @@
     [urlRequest setHTTPBody:putData];
     
     // Call the request
-    [self FetchOperation:urlRequest
+    [self fetchOperation:urlRequest
                  Success:^(NSData *result,
                            NSError *error,
                            NSURLResponse *response,
@@ -176,7 +188,7 @@
      }];
 }
 
-+ (void)DeleteOperation:(NSURL *)url
++ (void)deleteOperation:(NSURL *)url
                 Success:(void(^)(NSData *result,
                                  NSError *error,
                                  NSURLResponse *response,
@@ -195,7 +207,7 @@
       forHTTPHeaderField:@"Content-Type"];
     
     // Call the request
-    [self FetchOperation:urlRequest
+    [self fetchOperation:urlRequest
                      Success:^(NSData *result,
                                NSError *error,
                                NSURLResponse *response,
@@ -212,7 +224,7 @@
      }];
 }
 
-+ (void)FetchOperation:(NSMutableURLRequest *)urlRequest
++ (void)fetchOperation:(NSMutableURLRequest *)urlRequest
                Success:(void(^)(NSData *result,
                                 NSError *error,
                                 NSURLResponse *response,

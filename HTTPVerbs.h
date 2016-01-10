@@ -31,7 +31,7 @@ SOFTWARE.
  Version 1.0 (Current Version)
  
  - Methods for HTTP verbs (GEt, POST, PUT, DELETE)
- - Method for execution any HTTP operation
+ - Method to execute any HTTP operation
  
  */
 
@@ -39,22 +39,21 @@ SOFTWARE.
 
 @interface HTTPVerbs : NSObject
 
-// HTTP verbs
+/* HTTP verbs */
 
 /*
  
- Name: GetOperation:Success:Failure
+ Name: getOperation:Success:Failure
  Description: It allows to retrieve a resource or list of resources.
  Arguments:
     - url
  Returns: an asynchronous response.
- NSInteger
     - success (result, error, response, statusCode)
     - error (result, error, response, statusCode)
  
  */
 
-+ (void)GetOperation:(NSURL *)url
++ (void)getOperation:(NSURL *)url
              Success:(void(^)(NSData *result,
                               NSError *error,
                               NSURLResponse *response,
@@ -66,19 +65,18 @@ SOFTWARE.
 
 /* 
  
- Name: PostOperation:Data:Success:Failure
+ Name: postOperation:Data:Success:Failure
  Description: It allows to create new resources.
  Arguments:
     - url
     - data (json format)
  Returns: an asynchronous response.
- NSInteger
     - success (result, error, response, statusCode)
     - error (result, error, response, statusCode)
  
  */
 
-+ (void)PostOperation:(NSURL *)url
++ (void)postOperation:(NSURL *)url
                  Data:(NSDictionary *)data
               Success:(void(^)(NSData *result,
                                NSError *error,
@@ -91,19 +89,18 @@ SOFTWARE.
 
 /*
  
- Name: PutOperation:Data:Success:Failure
+ Name: putOperation:Data:Success:Failure
  Description: It allows to update a resource with an specific ID.
  Arguments:
     - url
     - data
  Returns: an asynchronous response.
- NSInteger
- - success (result, error, response, statusCode)
- - error (result, error, response, statusCode)
+    - success (result, error, response, statusCode)
+    - error (result, error, response, statusCode)
  
  */
 
-+ (void)PutOperation:(NSURL *)url
++ (void)putOperation:(NSURL *)url
                 Data:(NSDictionary *)data
              Success:(void(^)(NSData *result,
                               NSError *error,
@@ -116,18 +113,17 @@ SOFTWARE.
 
 /*
  
- Name: PutOperation:Data:Success:Failure
+ Name: deleteOperation:Success:Failure
  Description: It allows to delete a resource with an specific ID.
  Arguments:
- - url
+    - url
  Returns: an asynchronous response.
- NSInteger
- - success (result, error, response, statusCode)
- - error (result, error, response, statusCode)
+    - success (result, error, response, statusCode)
+    - error (result, error, response, statusCode)
  
  */
 
-+ (void)DeleteOperation:(NSURL *)url
++ (void)deleteOperation:(NSURL *)url
                 Success:(void(^)(NSData *result,
                                  NSError *error,
                                  NSURLResponse *response,
